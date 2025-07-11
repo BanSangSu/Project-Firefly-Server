@@ -1,9 +1,24 @@
 from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-# absolute path
-BASE_DIR = Path(__file__).resolve().parent
-ENV_PATH = BASE_DIR / ".env"
+import os
+
+
+# On your server (e.g., Render), you should create an environment variable
+# named 'APP_ENV' with the value 'production'.
+APP_ENV = os.getenv('APP_ENV', 'local')
+
+# Determine the .env file path based on the environment
+if APP_ENV == 'production':
+    # This block runs on the server (e.g., Render).
+    # It uses the absolute path where secrets are mounted.
+    ENV_PATH = Path("/etc/secrets/.env")
+else:
+    # This block runs on your local development machine.
+    # It finds the .env file located in the same directory as your settings file.
+    BASE_DIR = Path(__file__).resolve().parent
+    ENV_PATH = BASE_DIR / ".env"
+    
 
 class Settings(BaseSettings):
     # To read variables from a .env file
