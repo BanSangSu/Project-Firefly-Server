@@ -1,4 +1,4 @@
-# Project-Firefly-Server-with-Essential-Libraries
+# Project-Firefly-Server
 
 🚀 Project Firefly Server
 
