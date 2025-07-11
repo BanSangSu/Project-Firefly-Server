@@ -31,7 +31,7 @@ class Settings(BaseSettings):
     # APPLICATION SETTINGS
     APP_TITLE: str = "AI Agent Server"
     APP_VERSION: str = "0.1.0"
-    APP_ENV: str
+    
     DEBUG_MODE: bool
     
     # DATABASE URL
